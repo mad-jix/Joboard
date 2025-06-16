@@ -13,14 +13,31 @@
 					<div class=" job-search-form">
 						<h2 class="text-center">The Easiest Way to Get Your New Job</h2>
 						<h3>Find Jobs, Employment & Career Opportunities</h3>
-						<form>
+						<form method="GET" action="">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Job Title, Keywords Or Company Name">
+								<input type="text" name="search" class="form-control" placeholder="Job Title, Keywords Or Company Name" value="{{ request.GET.search }}">
 								<div class="input-group-prepend">
-									<button class="site-button">Search</button>
+									<button type="submit" class="site-button">Search</button>
 								</div>
 							</div>
 						</form>
+						{% if search_term %}
+							<div class="container mt-4">
+								<h4 class="text-white mb-3">Search Results for "{{ search_term }}"</h4>
+
+								{% if jobs %}
+									<div class="list-group">
+										{% for job in jobs %}
+											<a href="{% url 'job_detail' job.id %}" class="list-group-item list-group-item-action" style="padding: 10px 15px; font-size: 14px;">
+												<strong>{{ job.title }}</strong> – {{ job.location }} | {{ job.job_type }}
+											</a>
+										{% endfor %}
+									</div>
+								{% else %}
+									<p class="text-light">No jobs found matching your search.</p>
+								{% endif %}
+							</div>
+						{% endif %}
 					</div>
 				</div>
             </div>
