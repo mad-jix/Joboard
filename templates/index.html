@@ -4,6 +4,36 @@
 {% block content %}
 {% load static %}
 
+<style>
+	.job-search-results {
+		margin-top: 30px;
+	}
+
+	.job-result-bar {
+		background: #fff;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		padding: 10px 15px;
+		margin-bottom: 10px;
+		font-size: 15px;
+		color: #333;
+		display: block;
+		text-decoration: none;
+		transition: background-color 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.job-result-bar:hover {
+		background-color: #f9f9f9;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+		text-decoration: none;
+		color: #222;
+	}
+
+	.job-result-bar strong {
+		font-weight: 600;
+	}
+</style>
+
 
     <div class="page-content">
 		<!-- Section Banner -->
@@ -15,29 +45,27 @@
 						<h3>Find Jobs, Employment & Career Opportunities</h3>
 						<form method="GET" action="">
 							<div class="input-group">
-								<input type="text" name="search" class="form-control" placeholder="Job Title, Keywords Or Company Name" value="{{ request.GET.search }}">
+								<input type="text" name="search" class="form-control" placeholder="Job Title" value="{{ request.GET.search }}">
 								<div class="input-group-prepend">
 									<button type="submit" class="site-button">Search</button>
 								</div>
 							</div>
 						</form>
-						{% if search_term %}
-							<div class="container mt-4">
+						<div class="container job-search-results" id="search-results">
+							{% if search_term %}
 								<h4 class="text-white mb-3">Search Results for "{{ search_term }}"</h4>
 
 								{% if jobs %}
-									<div class="list-group">
-										{% for job in jobs %}
-											<a href="{% url 'job_detail' job.id %}" class="list-group-item list-group-item-action" style="padding: 10px 15px; font-size: 14px;">
-												<strong>{{ job.title }}</strong> – {{ job.location }} | {{ job.job_type }}
-											</a>
-										{% endfor %}
-									</div>
+									{% for job in jobs %}
+										<a href="{% url 'job_detail' job.id %}" class="job-result-bar">
+											<strong>{{ job.title }}</strong> – {{ job.location }} | {{ job.job_type }}
+										</a>
+									{% endfor %}
 								{% else %}
 									<p class="text-light">No jobs found matching your search.</p>
 								{% endif %}
-							</div>
-						{% endif %}
+							{% endif %}
+						</div>
 					</div>
 				</div>
             </div>
@@ -268,6 +296,17 @@
     <!-- scroll top button -->
     <button class="scroltop fa fa-arrow-up" ></button>
 </div>
+
+
+
+<script>
+    setTimeout(function() {
+        var results = document.getElementById("search-results");
+        if (results) {
+            results.style.display = "none";
+        }
+    }, 8000); // 8000 milliseconds = 8 seconds
+</script>
 
 
 {% endblock content %}
