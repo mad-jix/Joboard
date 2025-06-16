@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+
+# Django
+*.log
+*.pot
+*.pyc
+
+media/
+staticfiles/
+local_settings.py
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+
+# Node (if using npm for static)
+node_modules/
+
+# Coverage
+htmlcov/
+.coverage
+.tox/
+.cache/
+
+# Pipenv/Poetry
+Pipfile.lock
+poetry.lock
+
+# MySQL/Postgres dumps (optional)
+*.sql
+
+# AWS credentials
+.aws/
+
+# JetBrains
+*.iml
+*.ipr
+*.iws
+.idea/
