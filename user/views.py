@@ -66,8 +66,19 @@ def logout_view(request):
     return redirect('login_page') 
 
 def index(request):
-    latest_jobs = JobPost.objects.order_by('-posted_at')[:20]
-    return render(request, 'index.html', {'latest_jobs': latest_jobs})
+    search_term = request.GET.get('search', '')
+    if search_term:
+        jobs = JobPost.objects.filter(title__icontains=search_term)
+    else:
+        jobs = []
+
+    latest_jobs = JobPost.objects.all().order_by('-posted_at')[:20]  
+
+    return render(request, 'index.html', {
+        'latest_jobs': latest_jobs,
+        'jobs': jobs,
+        'search_term': search_term
+    })
 
 
 def about(request):
