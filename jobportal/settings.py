@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user',
     #third party
     'widget_tweaks',
+    'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'user.User'
