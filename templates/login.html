@@ -1,0 +1,97 @@
+{% extends "nav.html" %}
+{% load static %}
+
+{% block content %}
+<script>
+    // Auto-hide alerts after 5 seconds (5000 milliseconds)
+    setTimeout(function () {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function (alert) {
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 500); // Remove from DOM after fade
+        });
+    }, 5000);
+</script>
+
+
+
+<div class="page-content bg-white">
+    <div class="dez-bnr-inr overlay-black-middle bg-pt" style="background-image:url({% static 'images/banner/bnr2.jpg' %});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Login</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li>Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-full content-inner-2 shop-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="font-weight-700 m-t0 m-b20">Login Your Account</h3>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div>
+                <div class="max-w500 m-auto m-b30">
+                    <div class="p-a30 border-1 seth">
+                        <div class="tab-content nav">
+                            <!-- Login Form -->
+                            <form method="POST" class="tab-pane active col-12 p-a0">
+                                {% csrf_token %}
+                                
+                                {% if form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.non_field_errors }}
+                                    </div>
+                                {% endif %}
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-700">Email *</label>
+                                    <input type="text" 
+                                        name="username" 
+                                        class="form-control" 
+                                        placeholder="Email"
+                                        required
+                                        id="id_username">
+                                    {{ form.username.errors }}
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-700">Password *</label>
+                                    <input type="password" 
+                                        name="password" 
+                                        class="form-control" 
+                                        placeholder="Password"
+                                        required
+                                        id="id_password">
+                                    {{ form.password.errors }}
+                                </div>
+                                
+                                <div class="text-left">
+                                    <button type="submit" class="site-button m-r5 button-lg">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

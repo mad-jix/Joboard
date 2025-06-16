@@ -1,0 +1,143 @@
+{% extends "nav.html" %}
+
+{% block content %}
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-dark" style="background-image:url(images/banner/bnr1.jpg);">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Submit Resume</h1>
+                <!-- Breadcrumb row -->
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="#">Home</a></li>
+                        <li>Submit Resume</li>
+                    </ul>
+                </div>
+                <!-- Breadcrumb row END -->
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+    
+    <!-- contact area -->
+    <div class="content-block">
+        <!-- Submit Resume -->
+        <div class="section-full bg-white submit-resume content-inner-2">
+            <div class="container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label>Your name</label>
+                        <input type="text" class="form-control" 
+                               value="{{ request.user.get_full_name|default:request.user.username }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your email</label>
+                        <input type="email" class="form-control" 
+                               value="{{ request.user.email }}" readonly>
+                    </div>
+
+                    <!-- Professional Title -->
+                    <div class="form-group">
+                        <label>Professional title*</label>
+                        {{ form.professional_title }}
+                        {% if form.professional_title.errors %}
+                            <div class="text-danger">
+                                {% for error in form.professional_title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label>Location*</label>
+                        {{ form.location }}
+                        {% if form.location.errors %}
+                            <div class="text-danger">
+                                {% for error in form.location.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Resume Upload -->
+                    <div class="form-group">
+                        <label>Resume* (PDF, DOC, DOCX only)</label>
+                        <div class="custom-file">
+                            {{ form.resume }}
+                            <label class="custom-file-label" for="{{ form.resume.id_for_label }}">Choose file</label>
+                        </div>
+                        {% if form.resume.errors %}
+                            <div class="text-danger">
+                                {% for error in form.resume.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">Max file size: 5MB</small>
+                    </div>
+
+                    <!-- Resume Content -->
+                    <div class="form-group">
+                        <label>Resume Content*</label>
+                        {{ form.resume_content }}
+                        {% if form.resume_content.errors %}
+                            <div class="text-danger">
+                                {% for error in form.resume_content.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="form-group">
+                        <label>Skills* (comma separated)</label>
+                        {{ form.skill }}
+                        {% if form.skill.errors %}
+                            <div class="text-danger">
+                                {% for error in form.skill.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="site-button">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Update file input label with selected filename
+    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : "Choose file";
+        var nextSibling = e.target.nextElementSibling;
+        nextSibling.innerText = fileName;
+    });
+</script>
+{% endblock %}

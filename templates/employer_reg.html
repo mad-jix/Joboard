@@ -1,0 +1,125 @@
+{% extends "nav.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle bg-pt" style="background-image:url({% static 'images/banner/bnr2.jpg' %});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Register</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="#">Home</a></li>
+                        <li>Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- inner page banner END -->
+
+    <div class="section-full content-inner shop-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="font-weight-700 m-t0 m-b20">Create An Account</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 m-b30">
+                    <div class="p-a30 border-1 max-w500 m-auto">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <form method="POST" action="{% url 'register_employer' %}">
+                            {% csrf_token %}
+                            
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
+                            
+                            <div class="form-group">
+                                <label for="{{ form.companyname.id_for_label }}">Company</label>
+                                <input type="text" 
+                                       name="{{ form.companyname.name }}" 
+                                       id="{{ form.companyname.id_for_label }}" 
+                                       class="form-control" 
+                                       placeholder="Companyname"
+                                       value="{{ form.companyname.value|default_if_none:'' }}">
+                                {% if form.username.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.username.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                <input type="email" 
+                                       name="{{ form.email.name }}" 
+                                       id="{{ form.email.id_for_label }}" 
+                                       class="form-control" 
+                                       placeholder="Your Email"
+                                       value="{{ form.email.value|default_if_none:'' }}">
+                                {% if form.email.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.email.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.password1.id_for_label }}">Password</label>
+                                <input type="password" 
+                                       name="{{ form.password1.name }}" 
+                                       id="{{ form.password1.id_for_label }}" 
+                                       class="form-control" 
+                                       placeholder="Password">
+                                {% if form.password1.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.password1.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                                <input type="password" 
+                                       name="{{ form.password2.name }}" 
+                                       id="{{ form.password2.id_for_label }}" 
+                                       class="form-control" 
+                                       placeholder="Confirm Password">
+                                {% if form.password2.errors %}
+                                    <div class="text-danger">
+                                        {% for error in form.password2.errors %}
+                                            <small>{{ error }}</small><br>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="text-left">
+                                <button type="submit" class="site-button button-lg outline outline-2">CREATE</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+{% endblock content %}

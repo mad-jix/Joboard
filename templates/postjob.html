@@ -1,0 +1,143 @@
+{% extends "nav.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<div class="page-content bg-white">
+    <div class="dez-bnr-inr overlay-black-dark" style="background-image:url({% static 'images/banner/bnr1.jpg' %});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Submit Job</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="#">Home</a></li>
+                        <li>Submit Job</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-block">
+        <div class="section-full bg-white submit-resume content-inner-2">
+            <div class="container">
+                <form method="post" enctype="multipart/form-data" action="{% url 'post-job' %}">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <p>{{ field|title }}: {{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label>Job Title</label>
+                        {% render_field form.title class="form-control" placeholder="Enter Job Title" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Job Description</label>
+                        {% render_field form.description class="form-control" placeholder="Your Content" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Salary ($)</label>
+                        {% render_field form.salary class="form-control" placeholder="800" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        {% render_field form.location class="form-control" placeholder="New York" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Experience</label>
+                        {% render_field form.experience class="form-control" placeholder="6 Years Experience" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Deadline</label>
+                        {% render_field form.deadline class="form-control" type="date" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Education</label>
+                        {% render_field form.education class="form-control" placeholder="B" %}
+                    </div>
+                    <div class="form-group">
+                        <label>How to Apply</label>
+                        {% render_field form.how_to_apply class="form-control" placeholder="Send resume to hr@example.com" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Job Requirements</label>
+                        {% render_field form.requirements class="form-control" placeholder="List of job requirements..." %}
+                    </div>
+                    <div class="form-group">
+                        <label>Company Logo </label>
+                        {% render_field form.company_logo class="form-control-file" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Job Type</label>
+                        {% render_field form.job_type class="form-control" %}
+                    </div>
+                    <div class="form-group">
+                        <label>Work Mode</label>
+                        {% render_field form.work_mode class="form-control" %}
+                    </div>
+                    <button type="submit" class="site-button">Post Job</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- JAVASCRIPT FILES ========================================= -->
+<script src="js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+<script src="plugins/wow/wow.js"></script><!-- WOW JS -->
+<script src="plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
+<script src="plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
+<script src="plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
+<script src="plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+<script src="plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
+<script src="plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
+<script src="plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+<script src="plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
+<script src="plugins/rangeslider/rangeslider.js" ></script><!-- Rangeslider -->
+<script src="js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+<script src="js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS  -->
+<script src='js/recaptcha/api.js'></script> <!-- Google API For Recaptcha  -->
+<script src="js/dz.ajax.js"></script><!-- CONTACT JS  -->
+<script src="plugins/paroller/skrollr.min.js"></script><!-- PAROLLER -->
+<script type="text/javascript">
+
+			$("#exp-slider-range").slider({
+				range: true,
+				min: 0,
+				max: 10,
+				//values: [0, 10],
+				slide: function(event, ui) {
+					var min = ui.values[0],
+						max = ui.values[1];
+					  $('#' + this.id).prev().val( min + " year - " + max + " year");
+				}
+			});
+			
+			$("#salary-slider-range").slider({
+				range: true,
+				min: 10,
+				max: 100,
+				//values: [10, 1000],
+				slide: function(event, ui) {
+					var min = ui.values[0],
+						max = ui.values[1];
+					  $('#' + this.id).prev().val(min + "K - " + max + "K");
+				}
+			});
+		
+</script>
+</body>
+
+
+</html>
