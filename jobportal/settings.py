@@ -130,6 +130,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # if you have a global static folder
 ]
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 # For production (DEBUG=False)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
