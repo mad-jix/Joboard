@@ -6,6 +6,8 @@ from .forms import JobSeekerRegisterForm, EmployerRegisterForm, CustomLoginForm
 
 from employer.models import JobPost
 
+#Project Requirements : Features - User registration & login
+
 def register_job_seeker(request):
     if request.method == 'POST':
         form = JobSeekerRegisterForm(request.POST)

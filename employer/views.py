@@ -7,6 +7,8 @@ from jobseeker.models import JobApplication
 from .models import JobPost
 from .forms import JobForm
 
+
+##Project Requirements : Features - Job posting with title, description, salary, location
 @login_required(login_url='login_page') 
 def post_job(request):
     if request.user.role != 'employer':

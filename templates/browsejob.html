@@ -1,134 +1,109 @@
 {% extends "nav.html" %}
 {% load static %}
+
 {% block content %}
-    <!-- Content -->
-    <div class="page-content bg-white">
-        <!-- inner page banner -->
-        <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static "images/banner/bnr1.jpg" %});">
-            <div class="container">
-                <div class="dez-bnr-inr-entry">
-                    <h1 class="text-white">Browse Jobs</h1>
-					<!-- Breadcrumb row -->
-					<div class="breadcrumb-row">
-						<ul class="list-inline">
-							<li><a href="#">Home</a></li>
-							<li>Browse Jobs</li>
-						</ul>
-					</div>
-					<!-- Breadcrumb row END -->
+<div class="page-content bg-white">
+    <!-- inner page banner -->
+    <div class="dez-bnr-inr overlay-black-middle" style="background-image:url({% static "images/banner/bnr1.jpg" %});">
+        <div class="container">
+            <div class="dez-bnr-inr-entry">
+                <h1 class="text-white">Browse Jobs</h1>
+                <div class="breadcrumb-row">
+                    <ul class="list-inline">
+                        <li><a href="#">Home</a></li>
+                        <li>Browse Jobs</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- inner page banner END -->
-        <!-- contact area -->
-        <div class="content-block">
-			<!-- Browse Jobs -->
-			<div class="section-full bg-white browse-job content-inner-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-9 col-lg-8">
-							<h5 class="widget-title font-weight-700 text-uppercase">Recent Jobs</h5>
-							<ul class="post-job-bx">
-								{% for job in jobs %}
-								<li>
-									<a href="{% url 'job_detail' job.id %}">
-										<div class="d-flex m-b30">
-											<div class="job-post-company">
-												<span>
-													{% if job.company_logo %}
-														<img src="{{ job.company_logo.url }}" alt="Company Logo"
-															style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
-													{% else %}
-														<img src="{% static 'images/default-logo.png' %}" alt="Default Logo"
-															style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
-													{% endif %}
-												</span>
-											</div>
-
-											<div class="job-post-info" style="margin-left: 15px;">
-												<h4 class="m-t0 m-b10">{{ job.title }}</h4>
-												<ul class="d-flex no-wrap" style="flex-wrap: wrap; gap: 10px; font-size: 14px;">
-													<li><i class="fa fa-map-marker text-primary"></i> {{ job.location }}</li>
-													<li><i class="fa fa-bookmark-o text-primary"></i> {{ job.job_type|capfirst }}</li>
-													<li><i class="fa fa-clock-o text-primary"></i> Published {{ job.posted_at|timesince }} ago</li>
-												</ul>
-											</div>
-										</div>
-
-										<div class="d-flex align-items-center justify-content-between">
-											<div class="job-time">
-												<span class="badge badge-primary text-white" style="padding: 6px 12px; font-size: 13px;">
-													{{ job.job_type|capfirst }}
-												</span>
-											</div>
-											<div class="salary-bx text-right">
-												<span style="font-size: 16px; font-weight: bold;">
-													${{ job.salary }}
-												</span>
-											</div>
-										</div>
-									</a>
-								</li>
-								{% empty %}
-								<li><p>No jobs available at the moment.</p></li>
-								{% endfor %}
-							</ul>
-
-
-							<div class="pagination-bx m-t30">
-								<ul class="pagination">
-									<li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4">
-							<div class="sticky-top">
-								<div class="clearfix m-b30">
-									<h5 class="widget-title font-weight-700 text-uppercase">Keywords</h5>
-									<div class="">
-										<input type="text" class="form-control" placeholder="Search">
-									</div>
-								</div>
-								<div class="clearfix m-b30">
-									<h5 class="widget-title font-weight-700 text-uppercase">Job type</h5>
-									<div class="row">
-										<div class="col-lg-6 col-md-6 col-sm-6 col-6">
-											<div class="product-brand">
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="check1" name="example1">
-													<label class="custom-control-label" for="check1">Freelance</label>
-												</div>
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="check2" name="example1">
-													<label class="custom-control-label" for="check2">Full Time</label>
-												</div>
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="check3" name="example1">
-													<label class="custom-control-label" for="check3">Internship</label>
-												</div>
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="check4" name="example1">
-													<label class="custom-control-label" for="check4">Part Time</label>
-												</div>
-												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" id="check5" name="example1">
-													<label class="custom-control-label" for="check5">Temporary</label>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            <!-- Browse Jobs END -->
-		</div>
     </div>
-    <!-- Content END-->
+
+    <!-- content area -->
+    <div class="content-block">
+        <div class="section-full bg-white browse-job content-inner-2">
+            <div class="container">
+                <div class="row">
+                    <!-- Jobs list -->
+                    <div class="col-xl-9 col-lg-8">
+                        <h5 class="widget-title font-weight-700 text-uppercase">Recent Jobs</h5>
+                        <ul class="post-job-bx">
+                            {% for job in jobs %}
+                            <li>
+                                <a href="{% url 'job_detail' job.id %}">
+                                    <div class="d-flex m-b30">
+                                        <div class="job-post-company">
+                                            <span>
+                                                {% if job.company_logo %}
+                                                    <img src="{{ job.company_logo.url }}" alt="Company Logo"
+                                                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                                                {% else %}
+                                                    <img src="{% static 'images/default-logo.png' %}" alt="Default Logo"
+                                                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        <div class="job-post-info" style="margin-left: 15px;">
+                                            <h4 class="m-t0 m-b10">{{ job.title }}</h4>
+                                            <ul class="d-flex no-wrap" style="flex-wrap: wrap; gap: 10px; font-size: 14px;">
+                                                <li><i class="fa fa-map-marker text-primary"></i> {{ job.location }}</li>
+                                                <li><i class="fa fa-bookmark-o text-primary"></i> {{ job.get_job_type_display }}</li>
+                                                <li><i class="fa fa-clock-o text-primary"></i> Published {{ job.posted_at|timesince }} ago</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="job-time">
+                                            <span class="badge badge-primary text-white" style="padding: 6px 12px; font-size: 13px;">
+                                                {{ job.get_job_type_display }}
+                                            </span>
+                                        </div>
+                                        <div class="salary-bx text-right">
+                                            <span style="font-size: 16px; font-weight: bold;">
+                                                ${{ job.salary }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% empty %}
+                            <li><p>No jobs available at the moment.</p></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="sticky-top">
+                            <form method="get" action="{% url 'browse-job' %}">
+                                <div class="clearfix m-b30">
+                                    <h5 class="widget-title font-weight-700 text-uppercase">Company</h5>
+                                    <input type="text" class="form-control" name="company" placeholder="Search by company" value="{{ request.GET.company }}">
+                                </div>
+
+                                <div class="clearfix m-b30">
+                                    <h5 class="widget-title font-weight-700 text-uppercase">Location</h5>
+                                    <input type="text" class="form-control" name="location" placeholder="Enter location" value="{{ request.GET.location }}">
+                                </div>
+
+                                <div class="clearfix m-b30">
+                                    <h5 class="widget-title font-weight-700 text-uppercase">Job Type</h5>
+                                    <select class="form-control" name="category">
+                                        <option value="">-- Select Job Type --</option>
+                                        <option value="full_time" {% if request.GET.category == 'full_time' %}selected{% endif %}>Full Time</option>
+                                        <option value="part_time" {% if request.GET.category == 'part_time' %}selected{% endif %}>Part Time</option>
+                                        <option value="freelance" {% if request.GET.category == 'freelance' %}selected{% endif %}>Freelance</option>
+                                        <option value="internship" {% if request.GET.category == 'internship' %}selected{% endif %}>Internship</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">Apply Filters</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- content-block -->
+</div>
 {% endblock content %}
+

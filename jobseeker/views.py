@@ -11,14 +11,30 @@ def job_detail(request, job_id):
     job = get_object_or_404(JobPost, id=job_id)
     return render(request, 'jobdetail.html', {'job': job})
 
+#Project Requirements : Features - Job search with filters (location, category, company)
 def browse_jobs(request):
-    jobs = JobPost.objects.all().order_by('-posted_at')  # latest jobs first
+    jobs = JobPost.objects.all().order_by('-posted_at')
+
+    # Check for filters
+    location = request.GET.get('location')
+    job_type = request.GET.get('category')
+    company = request.GET.get('company')
+
+    # Apply filters only if values exist
+    if location:
+        jobs = jobs.filter(location__icontains=location)
+
+    if job_type:
+        jobs = jobs.filter(job_type=job_type)
+
+    if company:
+        jobs = jobs.filter(employer__username__icontains=company)
+
     return render(request, 'browsejob.html', {'jobs': jobs})
 
 
 
-
-
+#Project Requirements : Features - Users can apply for jobs
 @login_required(login_url='login_page') 
 def apply_to_job(request, job_id):
     job_post = get_object_or_404(JobPost, id=job_id)
