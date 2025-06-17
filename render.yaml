@@ -3,7 +3,7 @@ services:
     name: joboard
     runtime: python
     python:
-      version: 3.9.7  
+      version: 3.9.7  # Recommended stable version
     buildCommand: |
       pip install -r requirements.txt
       python manage.py migrate --noinput
@@ -14,5 +14,3 @@ services:
         generateValue: true
       - key: DEBUG
         value: "False"
-      - key: ALLOWED_HOSTS
-        value: joboard.onrender.com
