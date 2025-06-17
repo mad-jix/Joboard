@@ -1,0 +1,730 @@
+/*
+======================================
+  * CSS TABLE CONTENT *  
+======================================
+
+1. GENERAL
+2. HEADINGS
+3. TEXT & PARAGRAPH
+4. LISTS
+5. BOX SPACING (inner & outer)
+6. BOX MAX-WIDTH CSS
+7. POSITIONS (absolute & relative & static & z-index)
+8. COLOR (text & background)
+9. IMAGES OVERLAY EFFECTS
+10. IMAGES EFFECTS
+11. CONTENT SHOW ON IMAGE BOX
+12. FORM ELEMENTS
+13. WP DEFAULT
+14. HEADER (top part of page)
+15. PAGE TOP BAR (left & right content)
+16. LOGO (company identify symbol)
+17. MAIN BAR (place logo & main-navigation)
+18. NAVIGATIONS
+19. BANNER
+20. SLIDER
+21. BLOG
+22. WIDGETS
+23. CUSTOMIZE CSS
+24. SHORTCODES 
+25. PAGINATION
+26. FOOTER
+27. PAGE-CONTENT
+28. INNER-CONTENT
+29. SIDE-NAV
+30. CONTACT
+31. SHOPPING
+======================================
+  * END TABLE CONTENT *  
+======================================
+*/
+
+/*--------------------------------------------------------------
+1. GENERAL
+---------------------------------------------------------------*/
+body, html {
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #6f6f6f;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: #EFBB20;
+    outline: 0 none;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    outline: 0 none;
+}
+
+a:active,
+a:hover {
+    color: #333333;
+}
+
+p a {
+    color: #333333;
+}
+
+img {
+    border-style: none;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+hr {
+    clear: both;
+}
+
+section,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+summary {
+    display: block;
+}
+
+address {
+    font-style: italic;
+}
+
+table {
+    background-color: transparent;
+    width: 100%;
+}
+
+table thead th {
+    color: #333;
+}
+
+table td {
+    padding: 15px 10px;
+}
+
+p,
+address,
+pre,
+hr,
+ul,
+ol,
+dl,
+dd,
+table {
+    margin-bottom: 24px;
+}
+
+::selection {
+    color: #000;
+    background: #dbdbdb;
+}
+
+::-moz-selection {
+    color: #000;
+    background: #dbdbdb;
+}
+
+.clear {
+    clear: both;
+}
+
+/*---------------------------------------------------------------
+2. HEADINGS
+---------------------------------------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #232323;
+    font-family: 'Rubik', sans-serif;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #232323;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 45px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 28px;
+    line-height: 35px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+h5 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/*---------------------------------------------------------------
+3. TEXT & PARAGRAPH
+---------------------------------------------------------------*/
+p {
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+
+strong {
+    font-weight: 400;
+}
+
+/* Text align */
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+/* Text transform */
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* Text weight */
+.fw4 {
+    font-weight: 400;
+}
+
+.fw5 {
+    font-weight: 500;
+}
+
+.fw6 {
+    font-weight: 600;
+}
+
+/*---------------------------------------------------------------
+4. LISTS
+---------------------------------------------------------------*/
+ul,
+ol {
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+ul li,
+ol li {
+    padding: 0;
+}
+
+/*---------------------------------------------------------------
+5. BOX SPACING (inner & outer)
+---------------------------------------------------------------*/
+/* Padding */
+.p-a0 {
+    padding: 0;
+}
+
+.p-a15 {
+    padding: 15px;
+}
+
+.p-a20 {
+    padding: 20px;
+}
+
+.p-a30 {
+    padding: 30px;
+}
+
+/* Margin */
+.m-a0 {
+    margin: 0;
+}
+
+.m-a15 {
+    margin: 15px;
+}
+
+.m-a20 {
+    margin: 20px;
+}
+
+.m-a30 {
+    margin: 30px;
+}
+
+/*---------------------------------------------------------------
+6. BOX MAX-WIDTH CSS
+---------------------------------------------------------------*/
+.max-w100 {
+    max-width: 100px;
+}
+
+.max-w200 {
+    max-width: 200px;
+}
+
+.max-w300 {
+    max-width: 300px;
+}
+
+.max-w400 {
+    max-width: 400px;
+}
+
+.max-w500 {
+    max-width: 500px;
+}
+
+/*---------------------------------------------------------------
+7. POSITIONS (absolute & relative & static & z-index)
+---------------------------------------------------------------*/
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.static {
+    position: static;
+}
+
+.z-index1 {
+    z-index: 1;
+}
+
+.z-index2 {
+    z-index: 2;
+}
+
+/*---------------------------------------------------------------
+8. COLOR (text & background)
+---------------------------------------------------------------*/
+/* Text color */
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #000;
+}
+
+.text-gray {
+    color: #f5f6f6;
+}
+
+/* Background color */
+.bg-white {
+    background-color: #FFF;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.bg-gray {
+    background-color: #eef1ff;
+}
+
+/*---------------------------------------------------------------
+9. IMAGES OVERLAY EFFECTS
+---------------------------------------------------------------*/
+.dez-img-overlay1 {
+    position: relative;
+}
+
+.dez-img-overlay1:before {
+    content: "";
+    background: rgb(25,38,101);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+    z-index: 1;
+    transition: all 0.3s linear;
+}
+
+.dez-img-overlay1:hover:before {
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+}
+
+/*---------------------------------------------------------------
+10. IMAGES EFFECTS
+---------------------------------------------------------------*/
+.dez-img-effect {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    vertical-align: middle;
+}
+
+.dez-img-effect img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    transition: all 0.25s;
+}
+
+/* Image zoom */
+.dez-img-effect.zoom:hover img {
+    transform: scale(1.5);
+}
+
+/*---------------------------------------------------------------
+11. CONTENT SHOW ON IMAGE BOX
+---------------------------------------------------------------*/
+.dez-info-has {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 30px 15px 40px;
+    opacity: 0;
+    margin-bottom: -100px;
+    z-index: 2;
+}
+
+.dez-media:hover .dez-info-has {
+    opacity: 1;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/*---------------------------------------------------------------
+12. FORM ELEMENTS
+---------------------------------------------------------------*/
+.form-control {
+    border-color: #e1e6eb;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 9px 15px;
+}
+
+.form-control:focus {
+    border-color: #e1e1e1;
+    outline: 0;
+}
+
+/*---------------------------------------------------------------
+13. WP DEFAULT
+---------------------------------------------------------------*/
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 15px;
+}
+
+.alignright {
+    float: right;
+    margin: 5px 0 25px 25px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 25px 25px 0;
+}
+
+/*---------------------------------------------------------------
+14. HEADER (top part of page)
+---------------------------------------------------------------*/
+.site-header {
+    position: relative;
+    z-index: 99999;
+}
+
+/*---------------------------------------------------------------
+15. PAGE TOP BAR (left & right content)
+---------------------------------------------------------------*/
+.top-bar {
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: #444444;
+    padding: 11px 0;
+}
+
+/*---------------------------------------------------------------
+16. LOGO (company identify symbol)
+---------------------------------------------------------------*/
+.logo-header {
+    display: table;
+    float: left;
+    vertical-align: middle;
+    padding: 0;
+    color: #EFBB20;
+    margin: 0;
+    width: 140px;
+    height: 80px;
+    position: relative;
+    z-index: 9;
+    transition: all 0.5s;
+}
+
+.logo-header > a {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.logo-header img {
+    height: auto;
+    width: auto;
+    max-width: 180px;
+}
+
+/*---------------------------------------------------------------
+17. MAIN BAR (place logo & main-navigation)
+---------------------------------------------------------------*/
+.main-bar {
+    background: #FFFFFF;
+    width: 100%;
+    position: relative;
+}
+
+/*---------------------------------------------------------------
+18. NAVIGATIONS
+---------------------------------------------------------------*/
+.header-nav .nav > li > a {
+    color: #000;
+    font-size: 15px;
+    padding: 30px 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.header-nav .nav > li > a:hover {
+    color: #efbb20;
+}
+
+/*---------------------------------------------------------------
+19. BANNER
+---------------------------------------------------------------*/
+.dez-bnr-inr {
+    height: 300px;
+    background-size: cover;
+    background-position: center center;
+    display: table;
+    width: 100%;
+    text-align: left;
+}
+
+.dez-bnr-inr .container {
+    display: table;
+    height: 100%;
+}
+
+.dez-bnr-inr-entry {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*---------------------------------------------------------------
+20. SLIDER
+---------------------------------------------------------------*/
+.owl-theme .owl-nav {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/*---------------------------------------------------------------
+21. BLOG
+---------------------------------------------------------------*/
+.blog-post {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.dez-post-title {
+    margin-bottom: 5px;
+}
+
+.dez-post-meta {
+    margin-bottom: 10px;
+}
+
+/*---------------------------------------------------------------
+22. WIDGETS
+---------------------------------------------------------------*/
+.widget {
+    margin-bottom: 40px;
+}
+
+.widget-title {
+    margin: 0 0 25px;
+}
+
+/*---------------------------------------------------------------
+23. CUSTOMIZE CSS
+---------------------------------------------------------------*/
+.btn,
+.form-control {
+    border-radius: 0;
+}
+
+a,
+.btn,
+.form-control {
+    transition: all 0.2s linear;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*---------------------------------------------------------------
+24. SHORTCODES 
+---------------------------------------------------------------*/
+.site-button {
+    color: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    border-width: 0;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.site-button {
+    background-color: #EFBB20;
+}
+
+.site-button:hover {
+    background-color: #d8a409;
+    color: #fff;
+}
+
+/*---------------------------------------------------------------
+25. PAGINATION
+---------------------------------------------------------------*/
+.pagination .page-numbers {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    color: #767676;
+    padding: 9px 15px;
+    font-weight: 600;
+    display: block;
+    float: left;
+    margin-left: -1px;
+}
+
+/*---------------------------------------------------------------
+26. FOOTER
+---------------------------------------------------------------*/
+/* Basic footer styles would go here */
+
+/*---------------------------------------------------------------
+27. PAGE-CONTENT
+---------------------------------------------------------------*/
+/* Basic page content styles would go here */
+
+/*---------------------------------------------------------------
+28. INNER-CONTENT
+---------------------------------------------------------------*/
+/* Basic inner content styles would go here */
+
+/*---------------------------------------------------------------
+29. SIDE-NAV
+---------------------------------------------------------------*/
+/* Basic side navigation styles would go here */
+
+/*---------------------------------------------------------------
+30. CONTACT
+---------------------------------------------------------------*/
+/* Basic contact form styles would go here */
+
+/*---------------------------------------------------------------
+31. SHOPPING
+---------------------------------------------------------------*/
+/* Basic shopping cart styles would go here */
+
+/* Media Queries */
+@media only screen and (max-width: 767px) {
+    h1 {
+        font-size: 35px;
+        line-height: 42px;
+    }
+    
+    h2 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    
+    .logo-header {
+        width: 100px;
+        height: 50px;
+    }
+}
